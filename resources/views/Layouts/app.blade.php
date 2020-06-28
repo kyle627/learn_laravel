@@ -51,6 +51,8 @@
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                     	<li><a href="/" class="nav-link">Home</a></li>
+                        <li><a href="/posts/create" class="nav-link">Create Post</a></li>
+                        <li><a href="/posts" class="nav-link">Blog</a></li>
                     	<li><a href="/services" class="nav-link">Services</a></li>
                     	<li><a href="/about" class="nav-link">About</a></li>
                         <li><a href="{{ url('/login') }}">Login</a></li>
@@ -71,6 +73,7 @@
         </div>
     </nav>
     <main class="py-4 container">
+         @include('inc.messages')
     	 @yield('content')
     </main>
    
