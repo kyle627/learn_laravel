@@ -37,6 +37,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+     /**
+     * This post basically returns how many posts a user has.
+     *
+     * 
+     */
+
     public function posts(){
         return $this->hasMany('App\Post');
     }

@@ -171,4 +171,38 @@ class PostsController extends Controller
         $post->delete();
         return redirect('/posts')->with('success', 'Post was deleted');
     }
+
+    public function imageUploadLogic(){
+        //file upload
+        if ($request->hasFile('cover_image')) {
+            //get file name
+            $filenamewithExt = $request->file('cover_image')->getClientOriginalName();
+            //file name
+            $fileName = pathinfo($filenamewithExt, PATHINFO_FILENAME);
+            //extension
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //filename to store
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            //upload
+            $path = $request->file('cover_image')->storeAs('public/cover_images' , $fileNameToStore);
+        }else {
+            $fileNameToStore = 'no_image.jpeg';
+        }
+    }
+
+    public function imageEditLogic(){
+        //file upload
+        if ($request->hasFile('cover_image')) {
+            //get file name
+            $filenamewithExt = $request->file('cover_image')->getClientOriginalName();
+            //file name
+            $fileName = pathinfo($filenamewithExt, PATHINFO_FILENAME);
+            //extension
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //filename to store
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            //upload
+            $path = $request->file('cover_image')->storeAs('public/cover_images' , $fileNameToStore);
+        }
+    }
 }

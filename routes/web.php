@@ -18,29 +18,14 @@ Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 
 
-
-/*Route::get('/hello', function () {
-    return '<h1>HELLO</h1>';
-});
-
-Route::get('/users/{id}', function ($id) {
-    return 'BIG GUY ARE YOU THERE ' . $id;
-});*/
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/posts','PostsController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('comments/{post_id}', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
